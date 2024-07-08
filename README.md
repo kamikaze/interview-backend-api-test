@@ -1,3 +1,9 @@
+# Test Assignment: CRUD Backend API Development
+
+## Objective
+
+Develop a RESTful service to manage a collection of event records. The service must support Create, Read, and Query operations for event data.
+
 ## Environment:
 
 - Python version: 3.11
@@ -30,12 +36,6 @@ Example of an event data JSON object:
 }
 
 ```
-
-# Test Assignment: CRUD Backend API Development
-
-## Objective
-
-Develop a RESTful service to manage a collection of event records. The service must support Create, Read, and Query operations for event data.
 
 ## Specifications
 
