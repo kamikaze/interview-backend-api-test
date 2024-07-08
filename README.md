@@ -103,11 +103,10 @@ Example of an event data JSON object:
 
 - You need to create a simple Next.js application which interacts with your api.
 - In the app, you have list of events and their properties
-- You can submit an event and if it is valid, then it immediately shows in the list of events.
+- You can submit an event and if it is valid, then it immediately shows in the list of events. If the event is not valid, an error message shows.
   - You can hardcode couple of users in the frontend application with their details and respective integer ids
   - You can hardcode the repos in you frontend application with some mock details and respective ids.
 - You can filter the list of events by the event type.
-- Your frontend communicates with the backend you built in the previous part.
 
 ## Implementation Notes
 
