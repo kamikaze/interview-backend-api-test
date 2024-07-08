@@ -1,14 +1,22 @@
-# Test Assignment: CRUD Backend API Development
+# Test Assignment: CRUD App development
 
 ## Objective
 
 Develop a RESTful service to manage a collection of event records. The service must support Create, Read, and Query operations for event data.
+On top of that, in part 2, create a small frontend app to read and wrote this data.
 
 ## Environment:
+
+### Backend
 
 - Python version: 3.11
 - Django version: 4.2.7
 - Django REST framework version: 3.14.0
+
+### Frontent
+
+- Next.js
+- Typescript
 
 ## Read-Only Files:
 
@@ -37,7 +45,7 @@ Example of an event data JSON object:
 
 ```
 
-## Specifications
+## Specifications for the backend
 
 ### 1. Create Event
 
@@ -90,6 +98,16 @@ Example of an event data JSON object:
 
 - **Description:** Retrieves all events related to the specified repository.
 - **Response:** Status `200` with an array of events related to the repository ordered by their `id` in ascending order.
+
+## Specifications for the frontend
+
+- You need to create a simple Next.js application which interacts with your api.
+- In the app, you have list of events and their properties
+- You can submit an event and if it is valid, then it immediately shows in the list of events.
+  - You can hardcode couple of users in the frontend application with their details and respective integer ids
+  - You can hardcode the repos in you frontend application with some mock details and respective ids.
+- You can filter the list of events by the event type.
+- Your frontend communicates with the backend you built in the previous part.
 
 ## Implementation Notes
 
