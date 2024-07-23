@@ -11,7 +11,7 @@ django = "==4.2.7"
 djangorestframework = "==3.14.0"
 idna = "==3.4"
 pytz = "==2023.3.post1"
-requests = "==2.31.0"
+requests = "==2.32.2"
 sqlparse = "==0.4.4"
 urllib3 = "==2.1.0"
 
