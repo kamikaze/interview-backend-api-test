@@ -1,7 +1,6 @@
 from json import JSONDecodeError
 
 from django.test import TestCase
-
 from rest_framework import status
 from rest_framework.test import RequestsClient
 
@@ -50,7 +49,7 @@ class CreateEventTest(TestCase):
 
     def test_event_creation_valid_data(self):
         response = self.client.post(self.url, data=event_01_push_actor_1)
-        self.assertEquals(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         data = response.json()
         self.assertIn("id", data)
         self.assertTrue(isinstance(data["id"], int))
@@ -58,7 +57,7 @@ class CreateEventTest(TestCase):
         self.assertDictEqual(event_01_push_actor_1, data)
 
         response = self.client.post(self.url, data=event_02_watch_actor_1)
-        self.assertEquals(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         data = response.json()
         self.assertIn("id", data)
         self.assertTrue(isinstance(data["id"], int))
@@ -69,7 +68,7 @@ class CreateEventTest(TestCase):
         event_01_push_actor_1_copy = event_01_push_actor_1.copy()
         event_01_push_actor_1_copy["type"] = "pushevent"
         response = self.client.post(self.url, data=event_01_push_actor_1_copy)
-        self.assertEquals(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
 
 class TestGetAllEvents(TestCase):
@@ -93,7 +92,7 @@ class TestGetAllEvents(TestCase):
 
     def test_get_all_events(self):
         response = self.client.get(self.url)
-        self.assertEquals(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         data = response.json()
         self.assertListEqual(self.events, data)
 
@@ -125,7 +124,7 @@ class TestGetEvent(TestCase):
                 self.fail(
                     "/events/:event_id/ endpoint for GET request not implemented correctly"
                 )
-            self.assertEquals(response.status_code, status.HTTP_200_OK)
+            self.assertEqual(response.status_code, status.HTTP_200_OK)
             data = response.json()
             self.assertDictEqual(event, data)
 
@@ -136,7 +135,7 @@ class TestGetEvent(TestCase):
             self.fail(
                 "/events/:event_id/ endpoint for GET request not implemented correctly"
             )
-        self.assertEquals(response.status_code, status.HTTP_404_NOT_FOUND)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
 
 class TestGetEventsByReport(TestCase):
@@ -170,7 +169,7 @@ class TestGetEventsByReport(TestCase):
             self.fail(
                 "/repos/:repo_id/events/ endpoint for GET request not implemented correctly"
             )
-        self.assertEquals(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         data = response.json()
         self.assertListEqual(data, self.events_with_repo_id_1)
 
@@ -182,7 +181,7 @@ class TestGetEventsByReport(TestCase):
                 "/repos/:repo_id/events/ endpoint for GET request not implemented correctly"
             )
 
-        self.assertEquals(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         data = response.json()
         self.assertListEqual(data, self.events_with_repo_id_2)
 
@@ -194,7 +193,7 @@ class TestGetEventsByReport(TestCase):
                 "/repos/:repo_id/events/ endpoint for GET request not implemented correctly"
             )
 
-        self.assertEquals(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         data = response.json()
         self.assertListEqual(data, [])
 
@@ -231,7 +230,7 @@ class TestGetEventByUser(TestCase):
             self.fail(
                 "/users/:user_id/events/ endpoint for GET request not implemented correctly"
             )
-        self.assertEquals(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         data = response.json()
         self.assertListEqual(data, self.events_with_user_id_1)
 
@@ -243,7 +242,7 @@ class TestGetEventByUser(TestCase):
                 "/users/:user_id/events/ endpoint for GET request not implemented correctly"
             )
 
-        self.assertEquals(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         data = response.json()
         self.assertListEqual(data, self.events_with_user_id_2)
 
@@ -255,7 +254,7 @@ class TestGetEventByUser(TestCase):
                 "/users/:user_id/events/ endpoint for GET request not implemented correctly"
             )
 
-        self.assertEquals(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         data = response.json()
         self.assertListEqual(data, [])
 
@@ -295,7 +294,7 @@ class TestGetEventWithFilter(TestCase):
             self.fail(
                 "/events/?type=pushevent endpoint for GET request not implemented correctly"
             )
-        self.assertEquals(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertJSONEqual(
             response.content,
             {
@@ -313,6 +312,6 @@ class TestGetEventWithFilter(TestCase):
                 "/events/?type=WatchEvent endpoint for GET request not implemented correctly"
             )
 
-        self.assertEquals(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         data = response.json()
         self.assertListEqual(data, self.events_with_watch_events)
